@@ -1,0 +1,50 @@
+<! DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+	<title> Tài liệu </title>
+</head>
+<body>
+	<p> Khoản vay tiền số: 
+		<input type = "number" name = "sTienvay" id = "soTienVay"> VND
+	</p>
+	<p> Vay time:
+		<input type = "number" name = "tGianVay" id = "thoiGianVay"> tháng
+	</p>
+	<p> Suất lĩnh vực:
+		<input type = "number" name = "lSuat" id = "laiSuat">% năm
+	</p>
+	<p> ngân sách ngày
+		<input type = "date" name = "dateGiaiNgan" id = "date">
+	</p>
+	<button id = "btn"> Calc </button>
+	<div id = "result"> </div>
+	<div id = "tong"> </div>
+	
+
+	<script>
+		window.onload = () => {
+			var button = document.querySelector ('#btn')
+			button.addEventListener ('click', calcLoan)
+		}
+		function calcLoan () {
+			var soTienVay = document.querySelector ('#soTienVay'). value;
+			var thoiGianVay = document.querySelector ('#thoiGianVay'). value;
+			var laiSuat = document.querySelector ('#laiSuat'). value;
+			var gocHangThang = Math.floor (soTienVay / thoiGianVay);
+			var gocConLai = soTienVay;
+			for (var i = 1; i <= thoiGianVay; i ++) {
+				var laiPhaiTra = Math.floor (gocConLai * laiSuat) / 100;
+				var tienPhaiTraHangThang = laiPhaiTra + gocHangThang;
+				gocConLai = gocConLai - gocHangThang
+				result.innerHTML = result.innerHTML + `<br> Kỳ trả nợ: ${i}; Tiền Gốc: <span> ${gocConLai} </span>; root: ${gocHangThang}; lãi suất: ${laiPhaiTra.toString ()}; Shaft tổng: $ {gocHangThang + laiPhaiTra} `;
+
+				tong.innerHTML = `tổng: ${thoiGianVay} root: ${gocHangThang * 12} Active: ${laiPhaiTra}`
+			}
+			
+		}
+
+	</script>
+</body>
+</html>

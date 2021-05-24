@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+	<title> Tài liệu </title>
+	<link rel = "stylesheet" href = "BMI.css">
+</head>
+<body>
+	<div id = "container">
+		<h1> Máy tính BMI </h1>
+		<p> Chiều cao (cm) </p>
+		<input type = "text" id = "height">
+		<p> Trọng lượng (tính bằng kg) </p>
+		<input type = "text" id = "weight">
+		<button id = "btn" onclick = "calcBMI ()"> Máy tính </button>
+		<div id = "result"> </div>
+
+	</div>
+	<script>
+	window.onload = () => {
+		var button = document.querySelector ('#btn')
+		button.addEventListener ('click', calcBMI)
+	}
+	var calcBMI = function () {
+		var height = parseInt (document.getElementById ('height'). value)
+		var weight = parseInt (document.getElementById ('weight'). value)
+		var result = document.querySelector ('#result')
+
+		var BMI = (weight / ((height * height) / 10000))
+		if (BMI <18,9) {
+			result.innerHTML = ("Phân loại: Gầy, Nguy cơ phát bệnh: Thấp")
+		} else if (BMI <= 24,9) {
+			result.innerHTML = ("Phân loại: Bình Thường, Nguy cơ phát bệnh: Trung Bình")
+		} else if (BMI <= 29,9) {
+			result.innerHTML = ("Phân loại: Hơi Béo, Nguy cơ phát bệnh: Cao")
+		} else if (BMI <= 34,9) {
+			result.innerHTML = ("Phân loại: Béo Phì Cấp 1, Nguy cơ phát bệnh: Cao")
+		} else if (BMI <= 39,9) {
+			result.innerHTML = ("Phân loại: Béo Phì Cấp 2, Nguy cơ phát bệnh: Rất Cao")
+		} else {
+			result.innerHTML = ("Phân loại: Béo Phì Cấp 3, Nguy cơ phát bệnh: Nguy Hiểm")
+		}
+	}
+	</script>
+</body>
+</html>
