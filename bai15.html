@@ -1,0 +1,160 @@
+<mark! DOCTYPE html>
+<html lang = "en">
+  <head>
+    <meta charset = "UTF-8" />
+    <meta http-equiv = "X-UA-Tương thích" content = "IE = edge" />
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0" />
+    <title> Tài liệu </title>
+  </head>
+  <body>
+    <script>
+      function subjects (name, mark) {
+        this.name = name;
+        this.mark = mark;
+      }
+      class Student {
+        constructor (name, mark, gender, subject) {
+          this.name = name;
+          this.mark = mark;
+          this.gender = gender;
+          this.subject = subject;
+          this.showinfo = () => {
+            console.log (`Tên: ${this.name} - điểm: ${this.mark}`);
+          }
+        }
+      }
+      function SortGiam (array) {
+        array.sort (function (a, b) {
+          return b.mark - a.mark;
+        });
+        console.log (array);
+      }
+      function SortTang (array) {
+        array.sort (function (a, b) {
+          return a.mark - b.mark;
+        });
+        console.log (array);
+      }
+      var Student1 = new Student ("phuc", 5, "nam", [new subjects ("toan", 8), subjects ("ly", 6)]);
+      var Student2 = new Student ("A", 8, "nam", [new subjects ("toan", 9), subjects ("ly", 7)]);
+      var Student3 = new Student ("B", 6, "nữ", [new subjects ("toan", 7), subjects ("ly", 9)]);
+      var Student4 = new Student ("C", 7, "nữ", [new subjects ("toan", 5), subjects ("ly", 6)]);
+      var Student5 = new Student ("D", 9, "nam", [new subjects ("toan", 10), subjects ("ly", 6)]);
+      var Student6 = new Student ("E", 2, "nữ", [new subjects ("toan", 6), subjects ("ly", 8)]);
+      var Student7 = new Student ("F", 5, "nam", [new subjects ("toan", 7), subjects ("ly", 6)]);
+      var Student8 = new Student ("G", 4, "nam", [new subjects ("toan", 10), subjects ("ly", 6)]);
+      var Student9 = new Student ("H", 7, "nam", [new subjects ("toan", 7), subjects ("ly", 9)]);
+      var Student10 = new Student ("K", 0, "nam", [new  subjects ("toan", 7), subjects ("ly", 7),]);
+      var array = [Student1, Student2, Student3, Student4, Student5, Student6, Student7, Student8, Student9, Student10,];
+      // SortTang (mảng);
+      console.log (array);
+      // ------------------- nữ lớn tính toán lớn hơn 5 ----------------
+     var bai4 = (array) => {
+      var list = [];
+      for (var i = 0; i <array.length; i ++) {
+        if (array [i] .gender === "nữ" && array [i] .mark> 5) {
+          list.push (array [i]);
+        }
+      }
+      return list;
+     }
+     console.log ("nữ lớn tính toán lớn hơn 5");
+     console.log (bai4(array));
+      // ---------------- Filter ra danh sách sinh viên có điểm toán hoặc quản lý lớn hơn 8.0 ------------------
+     var bai5 = (array) => {
+      var item = [];
+      for (var i = 0; i < array.length; i++) {
+        for (j = 0; j < array[i].subject.length; j++) {
+          if (array[i].subject[j].name === "toan" && array[i].subject[j].mark > 8) {
+            item.push (array [i]);
+          } else if (array[i].subject[j].name === "ly" && array[i].subject[j].mark > 8) {
+            item.push (array [i]);
+          }
+        }
+      }
+      return item;
+     }
+      console.log ("danh sách sinh viên có điểm toán hoặc quản lý lớn hơn 8.0");
+      console.log (bai5 (array));
+        // Tìm sinh viên có điểm môn toán cao nhất và thấp nhất
+      function max (array) {
+        var list = [];
+        var max = 0;
+        for (var i = 0; i <array [0] .subject.length; i ++) {
+          if (array [0] .subject [i] .name === "toan") {
+            max = array [0] .subject [i] .mark;
+            console.log (max);
+          }
+        }
+        for (var i = 0; i <array.length; i ++) {
+          for (j = 0; j <array [i] .subject.length; j ++) {
+            if (array [i] .subject [j] .name === "toan" && array [i] .subject [j] .mark >= max) {
+              max = array [i] .subject [j] .mark;
+            }
+          }
+        }
+        for (var i = 0; i <array.length; i ++) {
+          for (j = 0; j <array [i] .subject.length; j ++) {
+            if (array [i] .subject [j] .name === "toan" && array [i] .subject [j] .mark === max) {
+              list.push (array [i]);
+            }
+          }
+        }
+
+        return list;
+      }
+    
+      console.log ("sinh viên có điểm môn toán cao nhất");
+      console.log (max (array));
+      function min (array) {
+        var list = [];
+        var min = 0;
+        for (var i = 0; i <array [0] .subject.length; i ++) {
+          if (array [0] .subject [i] .name === "toan") {
+            min = array [0] .subject [i] .mark;
+            console.log (min);
+          }
+        }
+        for (var i = 0; i <array.length; i ++) {
+          for (var j = 0; j <array [i] .subject.length; j ++) {
+            nếu (
+              array [i] .subject [j] .name === "toan" &&
+              array [i] .subject [j] .mark <= min
+            )  
+            {
+              min = array [i] .subject [j] .mark;
+            }
+          }
+        }
+        for (var i = 0; i <array.length; i ++) {
+          for (j = 0; j <array [i] .subject.length; j ++) {
+            if (array [i] .subject[j].name === "toan" && array[i] .subject[j].mark === min) {
+              list.push (array [i]);
+            }
+          }
+        }
+        return list;
+      }
+      console.log ("sinh viên có điểm môn toán thấp nhất");
+      console.log (min (array));
+      // --------------------------- Xoá khỏi danh sách sinh viên có tích luỹ là 0 --------- -
+      var deleteSt0 = (array) => {
+        for (var i = 0; i <array.length; i ++) {
+          if (array [i] .mark === 0) {
+            array.splice (i, 1);
+            i--;
+          }
+        }
+        return array;
+      }
+      console.log ("Xoá khỏi danh sách sinh viên có tích luỹ là 0");
+      console.log (deleteSt0 (mảng));
+      // Thêm 03 mới sinh viên vào danh sách.
+      var Student11 = new Student ("K", 0, "nam", [new subjects ("toan", 7), subjects ("ly", 7)]);
+      var Student12 = new Student ("K", 0, "nam", [new subjects ("toan", 7), subjects ("ly", 7)]);
+      var Student13 = new Student ("K", 0, "nam", [new subjects ("toan", 7), subjects ("ly", 7)]);
+      array.push (Student11, Student12, Student13);
+      console.log (array);
+    </script>
+  </body>
+</html>
